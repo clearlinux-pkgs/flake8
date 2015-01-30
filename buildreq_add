@@ -1,0 +1,7 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+mccabe-python
+pep8-python
+pyflakes-python
+python-mock
+nose-python
