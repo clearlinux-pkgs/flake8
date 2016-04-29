@@ -4,7 +4,7 @@
 #
 Name     : flake8
 Version  : 2.4.1
-Release  : 13
+Release  : 14
 URL      : https://pypi.python.org/packages/source/f/flake8/flake8-2.4.1.tar.gz
 Source0  : https://pypi.python.org/packages/source/f/flake8/flake8-2.4.1.tar.gz
 Summary  : the modular source code checker: pep8, pyflakes and co
