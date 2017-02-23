@@ -4,7 +4,7 @@
 #
 Name     : flake8
 Version  : 3.3.0
-Release  : 24
+Release  : 26
 URL      : http://pypi.debian.net/flake8/flake8-3.3.0.tar.gz
 Source0  : http://pypi.debian.net/flake8/flake8-3.3.0.tar.gz
 Summary  : the modular source code checker: pep8, pyflakes and co
@@ -12,6 +12,9 @@ Group    : Development/Tools
 License  : MIT
 Requires: flake8-bin
 Requires: flake8-python
+Requires: mccabe
+Requires: pycodestyle
+Requires: pyflakes
 BuildRequires : mccabe-python
 BuildRequires : nose-python
 BuildRequires : pbr
@@ -49,8 +52,6 @@ bin components for the flake8 package.
 %package python
 Summary: python components for the flake8 package.
 Group: Default
-Requires: mccabe-python
-Requires: pyflakes-python
 
 %description python
 python components for the flake8 package.
@@ -61,12 +62,12 @@ python components for the flake8 package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1487185912
+export SOURCE_DATE_EPOCH=1487875003
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1487185912
+export SOURCE_DATE_EPOCH=1487875003
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
