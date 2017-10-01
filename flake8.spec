@@ -4,7 +4,7 @@
 #
 Name     : flake8
 Version  : 3.4.1
-Release  : 30
+Release  : 31
 URL      : http://pypi.debian.net/flake8/flake8-3.4.1.tar.gz
 Source0  : http://pypi.debian.net/flake8/flake8-3.4.1.tar.gz
 Summary  : the modular source code checker: pep8, pyflakes and co
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : MIT
 Requires: flake8-bin
 Requires: flake8-legacypython
+Requires: flake8-python3
 Requires: flake8-python
 Requires: configparser
 Requires: enum34
@@ -60,9 +61,18 @@ legacypython components for the flake8 package.
 Summary: python components for the flake8 package.
 Group: Default
 Requires: flake8-legacypython
+Requires: flake8-python3
 
 %description python
 python components for the flake8 package.
+
+
+%package python3
+Summary: python3 components for the flake8 package.
+Group: Default
+
+%description python3
+python3 components for the flake8 package.
 
 
 %prep
@@ -73,12 +83,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505002394
+export SOURCE_DATE_EPOCH=1506869728
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1505002394
+export SOURCE_DATE_EPOCH=1506869728
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -98,5 +108,8 @@ echo ----[ mark ]----
 /usr/lib/python2*/*
 
 %files python
+%defattr(-,root,root,-)
+
+%files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*
