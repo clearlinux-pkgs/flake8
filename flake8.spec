@@ -4,7 +4,7 @@
 #
 Name     : flake8
 Version  : 3.4.1
-Release  : 32
+Release  : 33
 URL      : http://pypi.debian.net/flake8/flake8-3.4.1.tar.gz
 Source0  : http://pypi.debian.net/flake8/flake8-3.4.1.tar.gz
 Summary  : the modular source code checker: pep8, pyflakes and co
