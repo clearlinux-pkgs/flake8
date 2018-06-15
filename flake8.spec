@@ -28,7 +28,7 @@ BuildRequires : py-python
 BuildRequires : pyflakes-python
 BuildRequires : pytest
 BuildRequires : pytest-runner
-BuildRequires : python-dev
+
 BuildRequires : python-mock
 BuildRequires : python3-dev
 BuildRequires : setuptools
