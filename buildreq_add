@@ -3,5 +3,4 @@
 mccabe-python
 pep8-python
 pyflakes-python
-python-mock
 nose-python

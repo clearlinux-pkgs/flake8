@@ -4,7 +4,7 @@
 #
 Name     : flake8
 Version  : 3.5.0
-Release  : 42
+Release  : 43
 URL      : http://pypi.debian.net/flake8/flake8-3.5.0.tar.gz
 Source0  : http://pypi.debian.net/flake8/flake8-3.5.0.tar.gz
 Summary  : the modular source code checker: pep8, pyflakes and co
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : MIT
 Requires: flake8-bin
 Requires: flake8-python3
+Requires: flake8-license
 Requires: flake8-python
 Requires: configparser
 Requires: mccabe
@@ -23,17 +24,10 @@ BuildRequires : nose-python
 BuildRequires : pbr
 BuildRequires : pep8-python
 BuildRequires : pip
-BuildRequires : pluggy
-BuildRequires : py-python
 BuildRequires : pyflakes-python
-BuildRequires : pytest
 BuildRequires : pytest-runner
-
-BuildRequires : python-mock
 BuildRequires : python3-dev
 BuildRequires : setuptools
-BuildRequires : tox
-BuildRequires : virtualenv
 
 %description
 Flake8
@@ -42,9 +36,18 @@ Flake8
 %package bin
 Summary: bin components for the flake8 package.
 Group: Binaries
+Requires: flake8-license
 
 %description bin
 bin components for the flake8 package.
+
+
+%package license
+Summary: license components for the flake8 package.
+Group: Default
+
+%description license
+license components for the flake8 package.
 
 
 %package python
@@ -73,11 +76,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528561836
+export SOURCE_DATE_EPOCH=1529117055
 python3 setup.py build -b py3
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/flake8
+cp LICENSE %{buildroot}/usr/share/doc/flake8/LICENSE
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -89,6 +94,10 @@ echo ----[ mark ]----
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/flake8
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/flake8/LICENSE
 
 %files python
 %defattr(-,root,root,-)
