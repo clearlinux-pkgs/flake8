@@ -4,7 +4,7 @@
 #
 Name     : flake8
 Version  : 3.5.0
-Release  : 49
+Release  : 50
 URL      : http://pypi.debian.net/flake8/flake8-3.5.0.tar.gz
 Source0  : http://pypi.debian.net/flake8/flake8-3.5.0.tar.gz
 Summary  : the modular source code checker: pep8, pyflakes and co
@@ -19,6 +19,7 @@ Requires: mccabe
 Requires: pycodestyle
 Requires: pyflakes
 Requires: setuptools
+BuildRequires : buildreq-distutils3
 BuildRequires : mccabe-python
 BuildRequires : nose-python
 BuildRequires : pbr
@@ -78,8 +79,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1530993480
-find -name "*pyx" | xargs touch ||:
+export SOURCE_DATE_EPOCH=1532293266
 python3 setup.py build -b py3
 
 %install

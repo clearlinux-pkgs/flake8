@@ -12,7 +12,8 @@
 @@ -22,7 +22,7 @@
      # And in which releases we will update those ranges here:
      # http://flake8.pycqa.org/en/latest/internal/releases.html#releasing-flake8
-     "pyflakes >= 1.5.0, < 1.7.0",
+-    "pyflakes >= 1.5.0, < 1.7.0",
++    "pyflakes",
 -    "pycodestyle >= 2.0.0, < 2.4.0",
 +    "pycodestyle ",
      "mccabe >= 0.6.0, < 0.7.0",
@@ -23,9 +24,21 @@
 @@ -9,7 +9,7 @@
  	enum34; python_version<"3.4"
  	configparser; python_version<"3.2"
- 	pyflakes >= 1.5.0, < 1.7.0
+-	pyflakes >= 1.5.0, < 1.7.0
++	pyflakes 
 -	pycodestyle >= 2.0.0, < 2.4.0
 +	pycodestyle
  	mccabe >= 0.6.0, < 0.7.0
  
  [egg_info]
+--- flake8-3.5.0/src/flake8.egg-info/requires.txt~	2018-07-07 19:55:37.000000000 +0000
++++ flake8-3.5.0/src/flake8.egg-info/requires.txt	2018-07-22 20:54:18.427362736 +0000
+@@ -1,6 +1,6 @@
+-pyflakes<1.7.0,>=1.5.0
++pyflakes
+ pycodestyle
+-mccabe<0.7.0,>=0.6.0
++mccabe
+ setuptools>=30
+ 
+ [:python_version<'3.2']
