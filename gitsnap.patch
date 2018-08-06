@@ -1,0 +1,1324 @@
+diff --git a/README.rst b/README.rst
+index f6237aa..9c5f3c6 100644
+--- a/README.rst
++++ b/README.rst
+@@ -74,4 +74,4 @@ Maintenance
+ ===========
+ 
+ Flake8 was created by Tarek Ziadé and is currently maintained by `Ian Cordasco
+-<https://coglib.com/~icordasc/>`_
++<http://www.coglib.com/~icordasc/>`_
+diff --git a/docs/source/conf.py b/docs/source/conf.py
+index 355e6ff..dd2003f 100644
+--- a/docs/source/conf.py
++++ b/docs/source/conf.py
+@@ -297,4 +297,4 @@ texinfo_documents = [
+ 
+ 
+ # Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {'python': ('https://docs.python.org/3.4', None)}
++intersphinx_mapping = {'python': ('https://docs.python.org/3/', None)}
+diff --git a/docs/source/internal/contributing.rst b/docs/source/internal/contributing.rst
+index 023a553..33757d0 100644
+--- a/docs/source/internal/contributing.rst
++++ b/docs/source/internal/contributing.rst
+@@ -2,7 +2,7 @@
+  Contributing to Flake8
+ ========================
+ 
+-There are many ways to contriubte to |Flake8|, and we encourage them all:
++There are many ways to contribute to |Flake8|, and we encourage them all:
+ 
+ - contributing bug reports and feature requests
+ 
+diff --git a/docs/source/internal/writing-code.rst b/docs/source/internal/writing-code.rst
+index de129af..9d260b7 100644
+--- a/docs/source/internal/writing-code.rst
++++ b/docs/source/internal/writing-code.rst
+@@ -4,7 +4,7 @@
+  Writing Code for Flake8
+ =========================
+ 
+-The maintainers of |Flake8| unsurprisingly have some opinions about the styl
++The maintainers of |Flake8| unsurprisingly have some opinions about the style
+ of code maintained in the project.
+ 
+ At the time of this writing, |Flake8| enables all of PyCodeStyle's checks, all
+@@ -141,7 +141,7 @@ As a result, of the above, we do not:
+ 
+ - Import only the objects we're using
+ 
+-- Add commnts explaining that an import is a standard library module or
++- Add comments explaining that an import is a standard library module or
+   something else
+ 
+ 
+diff --git a/docs/source/plugin-development/cross-compatibility.rst b/docs/source/plugin-development/cross-compatibility.rst
+index 9cf38b8..9deadec 100644
+--- a/docs/source/plugin-development/cross-compatibility.rst
++++ b/docs/source/plugin-development/cross-compatibility.rst
+@@ -182,6 +182,6 @@ fact that pep8 or pycodestyle is not installed.
+ 
+ 
+ .. links
+-.. _flake8-polyfill: https://pypi.io/project/flake8-polyfill/
++.. _flake8-polyfill: https://pypi.org/project/flake8-polyfill/
+ 
+ .. |polyfill| replace:: ``flake8-polyfill``
+diff --git a/docs/source/plugin-development/formatters.rst b/docs/source/plugin-development/formatters.rst
+index 480ada0..8133567 100644
+--- a/docs/source/plugin-development/formatters.rst
++++ b/docs/source/plugin-development/formatters.rst
+@@ -33,7 +33,7 @@ Let's do that next.
+             return 'Example formatter: {0!r}'.format(error)
+ 
+ With that we're done. Obviously this isn't a very useful formatter, but it
+-should highlight the simplicitly of creating a formatter with Flake8. If we
++should highlight the simplicity of creating a formatter with Flake8. If we
+ wanted to instead create a formatter that aggregated the results and returned
+ XML, JSON, or subunit we could also do that. |Flake8| interacts with the
+ formatter in two ways:
+diff --git a/docs/source/plugin-development/registering-plugins.rst b/docs/source/plugin-development/registering-plugins.rst
+index 0f4280f..39c3083 100644
+--- a/docs/source/plugin-development/registering-plugins.rst
++++ b/docs/source/plugin-development/registering-plugins.rst
+@@ -25,7 +25,6 @@ like:
+ 
+ .. code-block:: python
+ 
+-    from __future__ import with_statement
+     import setuptools
+ 
+     requires = [
+@@ -130,6 +129,14 @@ like::
+ Finally, if all of your plugin's error codes start with just ``X`` then it
+ would look like the original example.
+ 
++|Flake8| requires each entry point to be unique amongst all plugins installed
++in the users environment. Selecting an entry point that is already used can
++cause plugins to be deactivated without warning!
++
++**Please Note:** Your entry point does not need to be exactly 4 characters
++as of |Flake8| 3.0. *Consider using an entry point with 3 letters followed
++by 3 numbers (i.e.* ``ABC123`` *).*
++
+ 
+ .. _Entry Points:
+-    https://pythonhosted.org/setuptools/pkg_resources.html#entry-points
++    https://setuptools.readthedocs.io/en/latest/pkg_resources.html#entry-points
+diff --git a/docs/source/release-notes/2.0.0.rst b/docs/source/release-notes/2.0.0.rst
+index 4c1ff04..67169d3 100644
+--- a/docs/source/release-notes/2.0.0.rst
++++ b/docs/source/release-notes/2.0.0.rst
+@@ -5,7 +5,7 @@
+ - McCabe complexity warnings are prefixed by a ``C`` instead of a ``W``
+ - Flake8 supports extensions through entry points
+ - Due to the above support, we **require** setuptools
+-- We publish the `documentation <https://flake8.readthedocs.org/>`_
++- We publish the `documentation <https://flake8.readthedocs.io/>`_
+ - Fixes #13: pep8, pyflakes and mccabe become external dependencies
+ - Split run.py into main.py, engine.py and hooks.py for better logic
+ - Expose our parser for our users
+diff --git a/docs/source/release-notes/2.4.0.rst b/docs/source/release-notes/2.4.0.rst
+index 6c470cd..94cba9a 100644
+--- a/docs/source/release-notes/2.4.0.rst
++++ b/docs/source/release-notes/2.4.0.rst
+@@ -30,4 +30,4 @@
+ .. _GitLab#35: https://gitlab.com/pycqa/flake8/issues/35
+ .. _GitLab!18: https://gitlab.com/pycqa/flake8/merge_requests/18
+ .. _GitLab!20: https://gitlab.com/pycqa/flake8/merge_requests/20
+-.. _VCS hooks docs: https://flake8.readthedocs.org/en/latest/vcs.html
++.. _VCS hooks docs: https://flake8.readthedocs.io/en/latest/user/using-hooks.html
+diff --git a/docs/source/user/configuration.rst b/docs/source/user/configuration.rst
+index eacacef..e6b3de8 100644
+--- a/docs/source/user/configuration.rst
++++ b/docs/source/user/configuration.rst
+@@ -267,6 +267,27 @@ example:
+ These configurations will allow you to select your own custom reporter plugin
+ that you've designed or will utilize your new check classes.
+ 
++If your package is installed in the same virtualenv that |Flake8| will run
++from, and your local plugins are part of that package, you're all set; |Flake8|
++will be able to import your local plugins. However, if you are working on a
++project that isn't set up as an installable package, or |Flake8| doesn't run
++from the same virtualenv your code runs in, you may need to tell |Flake8| where
++to import your local plugins from. You can do this via the ``paths`` option in
++the ``local-plugins`` section of your config:
++
++.. code-block:: ini
++
++    [flake8:local-plugins]
++    extension =
++      MC1 = myflake8plugin:MyChecker1
++    paths =
++      ./path/to
++
++Relative paths will be interpreted relative to the config file. Multiple paths
++can be listed (comma separated just like ``exclude``) as needed. If your local
++plugins have any dependencies, it's up to you to ensure they are installed in
++whatever Python environment |Flake8| runs in.
++
+ .. note::
+ 
+     These plugins otherwise follow the same guidelines as regular plugins.
+diff --git a/docs/source/user/error-codes.rst b/docs/source/user/error-codes.rst
+index f14c4ec..89183fa 100644
+--- a/docs/source/user/error-codes.rst
++++ b/docs/source/user/error-codes.rst
+@@ -54,6 +54,9 @@ generates its own :term:`error code`\ s for ``pyflakes``:
+ +------+---------------------------------------------------------------------+
+ | F707 | an ``except:`` block as not the last exception handler              |
+ +------+---------------------------------------------------------------------+
++| F721 | doctest syntax error                                                |
++| F722 | syntax error in forward type annotation                             |
+++------+---------------------------------------------------------------------+
+ +------+---------------------------------------------------------------------+
+ | F811 | redefinition of unused ``name`` from line ``N``                     |
+ +------+---------------------------------------------------------------------+
+@@ -69,6 +72,9 @@ generates its own :term:`error code`\ s for ``pyflakes``:
+ +------+---------------------------------------------------------------------+
+ | F841 | local variable ``name`` is assigned to but never used               |
+ +------+---------------------------------------------------------------------+
+++------+---------------------------------------------------------------------+
++| F901 | ``raise NotImplemented`` should be ``raise NotImplementedError``    |
+++------+---------------------------------------------------------------------+
+ 
+ Note that some of these entries behave differently on Python 2 and Python 3,
+ for example F812 is specific to Python 2 only.
+diff --git a/docs/source/user/invocation.rst b/docs/source/user/invocation.rst
+index d96d0f9..c469f37 100644
+--- a/docs/source/user/invocation.rst
++++ b/docs/source/user/invocation.rst
+@@ -107,6 +107,10 @@ And you should see something like:
+       --ignore=errors       Comma-separated list of errors and warnings to ignore
+                             (or skip). For example, ``--ignore=E4,E51,W234``.
+                             (Default: E121,E123,E126,E226,E24,E704)
++      --extend-ignore=errors
++                            Comma-separated list of errors and warnings to add to
++                            the list of ignored ones. For example, ``--extend-
++                            ignore=E4,E51,W234``.
+       --max-line-length=n   Maximum allowed line length for the entirety of this
+                             run. (Default: 79)
+       --select=errors       Comma-separated list of errors and warnings to enable.
+diff --git a/docs/source/user/options.rst b/docs/source/user/options.rst
+index 4922c1a..1cbc22f 100644
+--- a/docs/source/user/options.rst
++++ b/docs/source/user/options.rst
+@@ -56,6 +56,8 @@ Index of Options
+ 
+ - :option:`flake8 --ignore`
+ 
++- :option:`flake8 --extend-ignore`
++
+ - :option:`flake8 --max-line-length`
+ 
+ - :option:`flake8 --select`
+@@ -416,6 +418,37 @@ Options and their Descriptions
+         ignore = E121,E123
+ 
+ 
++.. option:: --extend-ignore=<errors>
++
++    :ref:`Go back to index <top>`
++
++    Specify a list of codes to add to the list of ignored ones. Similar
++    considerations as in :option:`--ignore` apply here with regard to the
++    value.
++
++    The difference to the :option:`--ignore` option is, that this option can be
++    used to selectively add individual codes without overriding the default
++    list entirely.
++
++    Command-line example:
++
++    .. prompt:: bash
++
++        flake8 --extend-ignore=E4,E51,W234 dir/
++
++    This **can** be specified in config files.
++
++    Example config file usage:
++
++    .. code-block:: ini
++
++        extend-ignore =
++            E4,
++            E51,
++            W234
++        extend-ignore = E4,E51,W234
++
++
+ .. option:: --max-line-length=<n>
+ 
+     :ref:`Go back to index <top>`
+diff --git a/docs/source/user/using-plugins.rst b/docs/source/user/using-plugins.rst
+index fad1911..3971578 100644
+--- a/docs/source/user/using-plugins.rst
++++ b/docs/source/user/using-plugins.rst
+@@ -59,8 +59,8 @@ documented this for you.
+ 
+ 
+ .. _PyPI:
+-    https://pypi.io/
++    https://pypi.org/
+ .. _flake8-docstrings:
+-    https://pypi.io/project/flake8-docstrings/
++    https://pypi.org/project/flake8-docstrings/
+ .. _flake8-future:
+-    https://pypi.io/project/flake8-future/
++    https://pypi.org/project/flake8-future/
+diff --git a/setup.py b/setup.py
+index aa45e43..28308bc 100644
+--- a/setup.py
++++ b/setup.py
+@@ -21,8 +21,8 @@ requires = [
+     # http://flake8.pycqa.org/en/latest/faq.html#why-does-flake8-use-ranges-for-its-dependencies
+     # And in which releases we will update those ranges here:
+     # http://flake8.pycqa.org/en/latest/internal/releases.html#releasing-flake8
+-    "pyflakes >= 1.5.0, < 1.7.0",
+-    "pycodestyle >= 2.0.0, < 2.4.0",
++    "pyflakes >= 2.0.0, < 2.1.0",
++    "pycodestyle >= 2.4.0, < 2.5.0",
+     "mccabe >= 0.6.0, < 0.7.0",
+     "setuptools >= 30",
+ ]
+@@ -74,6 +74,7 @@ setuptools.setup(
+         "flake8.options",
+         "flake8.plugins",
+     ],
++    python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
+     install_requires=requires,
+     extras_require=extras_require,
+     entry_points={
+@@ -85,7 +86,7 @@ setuptools.setup(
+         ],
+         'flake8.extension': [
+             'F = flake8.plugins.pyflakes:FlakesChecker',
+-            # PEP-0008 checks provied by PyCQA/pycodestyle
++            # PEP-0008 checks provided by PyCQA/pycodestyle
+             PEP8_PLUGIN('tabs_or_spaces'),
+             PEP8_PLUGIN('tabs_obsolete'),
+             PEP8_PLUGIN('trailing_whitespace'),
+@@ -108,7 +109,8 @@ setuptools.setup(
+             PEP8_PLUGIN('module_imports_on_top_of_file'),
+             PEP8_PLUGIN('compound_statements'),
+             PEP8_PLUGIN('explicit_line_join'),
+-            PEP8_PLUGIN('break_around_binary_operator'),
++            PEP8_PLUGIN('break_after_binary_operator'),
++            PEP8_PLUGIN('break_before_binary_operator'),
+             PEP8_PLUGIN('comparison_to_singleton'),
+             PEP8_PLUGIN('comparison_negative'),
+             PEP8_PLUGIN('comparison_type'),
+@@ -118,6 +120,8 @@ setuptools.setup(
+             PEP8_PLUGIN('python_3000_raise_comma'),
+             PEP8_PLUGIN('python_3000_not_equal'),
+             PEP8_PLUGIN('python_3000_backticks'),
++            PEP8_PLUGIN('python_3000_invalid_escape_sequence'),
++            PEP8_PLUGIN('python_3000_async_await_keywords'),
+         ],
+         'flake8.report': [
+             'default = flake8.formatting.default:Default',
+diff --git a/src/flake8/__init__.py b/src/flake8/__init__.py
+index efb711c..e9789ea 100644
+--- a/src/flake8/__init__.py
++++ b/src/flake8/__init__.py
+@@ -10,22 +10,10 @@ This module
+ 
+ """
+ import logging
+-try:
+-    from logging import NullHandler
+-except ImportError:
+-    class NullHandler(logging.Handler):
+-        """Shim for version of Python < 2.7."""
+-
+-        def emit(self, record):
+-            """Do nothing."""
+-            pass
+ import sys
+ 
+ LOG = logging.getLogger(__name__)
+-LOG.addHandler(NullHandler())
+-
+-# Clean up after LOG config
+-del NullHandler
++LOG.addHandler(logging.NullHandler())
+ 
+ __version__ = '3.5.0'
+ __version_info__ = tuple(int(i) for i in __version__.split('.') if i.isdigit())
+diff --git a/src/flake8/checker.py b/src/flake8/checker.py
+index 6e53cb5..b32fd3e 100644
+--- a/src/flake8/checker.py
++++ b/src/flake8/checker.py
+@@ -74,7 +74,6 @@ class Manager(object):
+         self.checks = checker_plugins
+         self.jobs = self._job_count()
+         self.using_multiprocessing = self.jobs > 1
+-        self.pool = None
+         self.processes = []
+         self.checkers = []
+         self.statistics = {
+@@ -84,14 +83,6 @@ class Manager(object):
+             'tokens': 0,
+         }
+ 
+-        if self.using_multiprocessing:
+-            try:
+-                self.pool = multiprocessing.Pool(self.jobs, _pool_init)
+-            except OSError as oserr:
+-                if oserr.errno not in SERIAL_RETRY_ERRNOS:
+-                    raise
+-                self.using_multiprocessing = False
+-
+     def _process_statistics(self):
+         for checker in self.checkers:
+             for statistic in defaults.STATISTIC_NAMES:
+@@ -219,7 +210,6 @@ class Manager(object):
+                 filename, filename_patterns
+             )
+             is_stdin = filename == '-'
+-            file_exists = os.path.exists(filename)
+             # NOTE(sigmavirus24): If a user explicitly specifies something,
+             # e.g, ``flake8 bin/script`` then we should run Flake8 against
+             # that. Since should_create_file_checker looks to see if the
+@@ -230,8 +220,7 @@ class Manager(object):
+             explicitly_provided = (not running_from_vcs and
+                                    not running_from_diff and
+                                    (argument == filename))
+-            return ((file_exists and
+-                     (explicitly_provided or matches_filename_patterns)) or
++            return ((explicitly_provided or matches_filename_patterns) or
+                     is_stdin)
+ 
+         checks = self.checks.to_dictionary()
+@@ -268,30 +257,40 @@ class Manager(object):
+             results_found += len(results)
+         return (results_found, results_reported)
+ 
+-    def _force_cleanup(self):
+-        if self.pool is not None:
+-            self.pool.terminate()
+-            self.pool.join()
+-
+     def run_parallel(self):
+         """Run the checkers in parallel."""
+         final_results = collections.defaultdict(list)
+         final_statistics = collections.defaultdict(dict)
+-        pool_map = self.pool.imap_unordered(
+-            _run_checks,
+-            self.checkers,
+-            chunksize=calculate_pool_chunksize(
+-                len(self.checkers),
+-                self.jobs,
+-            ),
+-        )
+-        for ret in pool_map:
+-            filename, results, statistics = ret
+-            final_results[filename] = results
+-            final_statistics[filename] = statistics
+-        self.pool.close()
+-        self.pool.join()
+-        self.pool = None
++
++        try:
++            pool = multiprocessing.Pool(self.jobs, _pool_init)
++        except OSError as oserr:
++            if oserr.errno not in SERIAL_RETRY_ERRNOS:
++                raise
++            self.using_multiprocessing = False
++            self.run_serial()
++            return
++
++        try:
++            pool_map = pool.imap_unordered(
++                _run_checks,
++                self.checkers,
++                chunksize=calculate_pool_chunksize(
++                    len(self.checkers),
++                    self.jobs,
++                ),
++            )
++            for ret in pool_map:
++                filename, results, statistics = ret
++                final_results[filename] = results
++                final_statistics[filename] = statistics
++            pool.close()
++            pool.join()
++            pool = None
++        finally:
++            if pool is not None:
++                pool.terminate()
++                pool.join()
+ 
+         for checker in self.checkers:
+             filename = checker.display_name
+@@ -328,8 +327,6 @@ class Manager(object):
+         except KeyboardInterrupt:
+             LOG.warning('Flake8 was interrupted by the user')
+             raise exceptions.EarlyQuit('Early quit while running checks')
+-        finally:
+-            self._force_cleanup()
+ 
+     def start(self, paths=None):
+         """Start checking files.
+@@ -432,7 +429,15 @@ class FileChecker(object):
+                 plugin=plugin,
+                 exception=ae,
+             )
+-        return plugin['plugin'](**arguments)
++        try:
++            return plugin['plugin'](**arguments)
++        except Exception as all_exc:
++            LOG.critical('Plugin %s raised an unexpected exception',
++                         plugin['name'])
++            raise exceptions.PluginExecutionFailed(
++                plugin=plugin,
++                excetion=all_exc,
++            )
+ 
+     @staticmethod
+     def _extract_syntax_information(exception):
+diff --git a/src/flake8/defaults.py b/src/flake8/defaults.py
+index 55cb48a..3ad959b 100644
+--- a/src/flake8/defaults.py
++++ b/src/flake8/defaults.py
+@@ -46,7 +46,7 @@ NOQA_INLINE_REGEXP = re.compile(
+     # We do not care about the ``: `` that follows ``noqa``
+     # We do not care about the casing of ``noqa``
+     # We want a comma-separated list of errors
+-    '# noqa(?:: (?P<codes>([A-Z][0-9]+(?:[,\s]+)?)+))?',
++    r'# noqa(?:: (?P<codes>([A-Z][0-9]+(?:[,\s]+)?)+))?',
+     re.IGNORECASE
+ )
+ 
+diff --git a/src/flake8/exceptions.py b/src/flake8/exceptions.py
+index 13e8996..c7217f5 100644
+--- a/src/flake8/exceptions.py
++++ b/src/flake8/exceptions.py
+@@ -76,6 +76,25 @@ class PluginRequestedUnknownParameters(Flake8Exception):
+                               'exc': self.original_exception}
+ 
+ 
++class PluginExecutionFailed(Flake8Exception):
++    """The plugin failed during execution."""
++
++    FORMAT = '"%(name)s" failed during execution due to "%(exc)s"'
++
++    def __init__(self, *args, **kwargs):
++        """Utilize keyword arguments for message generation."""
++        self.original_exception = kwargs.pop('exception')
++        self.plugin = kwargs.pop('plugin')
++        super(PluginExecutionFailed, self).__init__(
++            str(self), *args, **kwargs
++        )
++
++    def __str__(self):
++        """Format our exception message."""
++        return self.FORMAT % {'name': self.plugin['plugin_name'],
++                              'exc': self.original_exception}
++
++
+ class HookInstallationError(Flake8Exception):
+     """Parent exception for all hooks errors."""
+ 
+diff --git a/src/flake8/formatting/base.py b/src/flake8/formatting/base.py
+index c4c67d5..1443e4c 100644
+--- a/src/flake8/formatting/base.py
++++ b/src/flake8/formatting/base.py
+@@ -172,7 +172,7 @@ class BaseFormatter(object):
+         if self.output_fd is not None:
+             self.output_fd.write(output + self.newline)
+         if self.output_fd is None or self.options.tee:
+-            print(output)
++            print(output, end=self.newline)
+ 
+     def write(self, line, source):
+         """Write the line either to the output file or stdout.
+diff --git a/src/flake8/main/application.py b/src/flake8/main/application.py
+index 6c68305..9c15629 100644
+--- a/src/flake8/main/application.py
++++ b/src/flake8/main/application.py
+@@ -177,6 +177,8 @@ class Application(object):
+                 self.prelim_opts.isolated,
+             )
+ 
++        sys.path.extend(self.local_plugins.paths)
++
+         if self.check_plugins is None:
+             self.check_plugins = plugin_manager.Checkers(
+                 self.local_plugins.extension)
+@@ -307,7 +309,12 @@ class Application(object):
+         if self.running_against_diff:
+             files = sorted(self.parsed_diff)
+         self.file_checker_manager.start(files)
+-        self.file_checker_manager.run()
++        try:
++            self.file_checker_manager.run()
++        except exceptions.PluginExecutionFailed as plugin_failed:
++            print(str(plugin_failed))
++            print('Run flake8 with greater verbosity to see more details')
++            self.catastrophic_failure = True
+         LOG.info('Finished running')
+         self.file_checker_manager.stop()
+         self.end_time = time.time()
+@@ -398,7 +405,6 @@ class Application(object):
+             print('... stopped')
+             LOG.critical('Caught keyboard interrupt from user')
+             LOG.exception(exc)
+-            self.file_checker_manager._force_cleanup()
+             self.catastrophic_failure = True
+         except exceptions.ExecutionError as exc:
+             print('There was a critical error during execution of Flake8:')
+diff --git a/src/flake8/main/git.py b/src/flake8/main/git.py
+index ad55100..3637feb 100644
+--- a/src/flake8/main/git.py
++++ b/src/flake8/main/git.py
+@@ -132,6 +132,12 @@ def find_git_directory():
+ 
+ 
+ def copy_indexed_files_to(temporary_directory, lazy):
++    # some plugins (e.g. flake8-isort) need these files to run their checks
++    setup_cfgs = find_setup_cfgs(lazy)
++    for filename in setup_cfgs:
++        contents = get_staged_contents_from(filename)
++        copy_file_to(temporary_directory, filename, contents)
++
+     modified_files = find_modified_files(lazy)
+     for filename in modified_files:
+         contents = get_staged_contents_from(filename)
+@@ -170,6 +176,18 @@ def find_modified_files(lazy):
+     return stdout.splitlines()
+ 
+ 
++def find_setup_cfgs(lazy):
++    setup_cfg_cmd = [
++        'git', 'ls-files', '--cached', '*setup.cfg'
++    ]
++    if lazy:
++        setup_cfg_cmd.remove('--cached')
++    extra_files = piped_process(setup_cfg_cmd)
++    (stdout, _) = extra_files.communicate()
++    stdout = to_text(stdout)
++    return stdout.splitlines()
++
++
+ def get_staged_contents_from(filename):
+     git_show = piped_process(['git', 'show', ':{0}'.format(filename)])
+     (stdout, _) = git_show.communicate()
+diff --git a/src/flake8/main/options.py b/src/flake8/main/options.py
+index 131b714..c3ebb80 100644
+--- a/src/flake8/main/options.py
++++ b/src/flake8/main/options.py
+@@ -18,6 +18,7 @@ def register_default_options(option_manager):
+     - ``--format``
+     - ``--hang-closing``
+     - ``--ignore``
++    - ``--extend-ignore``
+     - ``--max-line-length``
+     - ``--select``
+     - ``--disable-noqa``
+@@ -108,6 +109,13 @@ def register_default_options(option_manager):
+              ' For example, ``--ignore=E4,E51,W234``. (Default: %default)',
+     )
+ 
++    add_option(
++        '--extend-ignore', metavar='errors', default='',
++        parse_from_config=True, comma_separated_list=True,
++        help='Comma-separated list of errors and warnings to add to the list'
++             ' of ignored ones. For example, ``--extend-ignore=E4,E51,W234``.',
++    )
++
+     add_option(
+         '--max-line-length', type='int', metavar='n',
+         default=defaults.MAX_LINE_LENGTH, parse_from_config=True,
+diff --git a/src/flake8/main/vcs.py b/src/flake8/main/vcs.py
+index 207d26c..73dbaa9 100644
+--- a/src/flake8/main/vcs.py
++++ b/src/flake8/main/vcs.py
+@@ -18,7 +18,7 @@ def install(option, option_string, value, parser):
+     """Determine which version control hook to install.
+ 
+     For more information about the callback signature, see:
+-    https://docs.python.org/2/library/optparse.html#optparse-option-callbacks
++    https://docs.python.org/3/library/optparse.html#optparse-option-callbacks
+     """
+     installer = _INSTALLERS.get(value)
+     errored = False
+diff --git a/src/flake8/options/config.py b/src/flake8/options/config.py
+index 71429af..ba9442a 100644
+--- a/src/flake8/options/config.py
++++ b/src/flake8/options/config.py
+@@ -54,6 +54,7 @@ class ConfigFileFinder(object):
+ 
+         # caches to avoid double-reading config files
+         self._local_configs = None
++        self._local_found_files = []
+         self._user_config = None
+         self._cli_configs = {}
+ 
+@@ -120,14 +121,22 @@ class ConfigFileFinder(object):
+             for filename in self.generate_possible_local_files()
+         ] + [f for f in self.extra_config_files if exists(f)]
+ 
+-    def local_configs(self):
+-        """Parse all local config files into one config object."""
++    def local_configs_with_files(self):
++        """Parse all local config files into one config object.
++
++        Return (config, found_config_files) tuple.
++        """
+         if self._local_configs is None:
+             config, found_files = self._read_config(self.local_config_files())
+             if found_files:
+                 LOG.debug('Found local configuration files: %s', found_files)
+             self._local_configs = config
+-        return self._local_configs
++            self._local_found_files = found_files
++        return (self._local_configs, self._local_found_files)
++
++    def local_configs(self):
++        """Parse all local config files into one config object."""
++        return self.local_configs_with_files()[0]
+ 
+     def user_config_file(self):
+         """Find the user-level config file."""
+@@ -314,7 +323,7 @@ def get_local_plugins(config_finder, cli_config=None, isolated=False):
+     :rtype:
+         flake8.options.config.LocalPlugins
+     """
+-    local_plugins = LocalPlugins(extension=[], report=[])
++    local_plugins = LocalPlugins(extension=[], report=[], paths=[])
+     if isolated:
+         LOG.debug('Refusing to look for local plugins in configuration'
+                   'files due to user-requested isolation')
+@@ -324,8 +333,11 @@ def get_local_plugins(config_finder, cli_config=None, isolated=False):
+         LOG.debug('Reading local plugins only from "%s" specified via '
+                   '--config by the user', cli_config)
+         config = config_finder.cli_config(cli_config)
++        config_files = [cli_config]
+     else:
+-        config = config_finder.local_configs()
++        config, config_files = config_finder.local_configs_with_files()
++
++    base_dirs = {os.path.dirname(cf) for cf in config_files}
+ 
+     section = '%s:local-plugins' % config_finder.program_name
+     for plugin_type in ['extension', 'report']:
+@@ -336,7 +348,19 @@ def get_local_plugins(config_finder, cli_config=None, isolated=False):
+                 local_plugins_string,
+                 regexp=utils.LOCAL_PLUGIN_LIST_RE,
+             ))
++    if config.has_option(section, 'paths'):
++        raw_paths = utils.parse_comma_separated_list(
++            config.get(section, 'paths').strip()
++        )
++        norm_paths = []
++        for base_dir in base_dirs:
++            norm_paths.extend(
++                path for path in
++                utils.normalize_paths(raw_paths, parent=base_dir)
++                if os.path.exists(path)
++            )
++        local_plugins.paths.extend(norm_paths)
+     return local_plugins
+ 
+ 
+-LocalPlugins = collections.namedtuple('LocalPlugins', 'extension report')
++LocalPlugins = collections.namedtuple('LocalPlugins', 'extension report paths')
+diff --git a/src/flake8/plugins/pyflakes.py b/src/flake8/plugins/pyflakes.py
+index bc19291..9ef9e93 100644
+--- a/src/flake8/plugins/pyflakes.py
++++ b/src/flake8/plugins/pyflakes.py
+@@ -38,6 +38,7 @@ FLAKE8_PYFLAKES_CODES = {
+     'ReturnOutsideFunction': 'F706',
+     'DefaultExceptNotLast': 'F707',
+     'DoctestSyntaxError': 'F721',
++    'ForwardAnnotationSyntaxError': 'F722',
+     'RedefinedWhileUnused': 'F811',
+     'RedefinedInListComp': 'F812',
+     'UndefinedName': 'F821',
+@@ -45,6 +46,7 @@ FLAKE8_PYFLAKES_CODES = {
+     'UndefinedLocal': 'F823',
+     'DuplicateArgument': 'F831',
+     'UnusedVariable': 'F841',
++    'RaiseNotImplemented': 'F901',
+ }
+ 
+ 
+diff --git a/src/flake8/processor.py b/src/flake8/processor.py
+index 3827a26..d54a82f 100644
+--- a/src/flake8/processor.py
++++ b/src/flake8/processor.py
+@@ -106,7 +106,7 @@ class FileProcessor(object):
+ 
+     @property
+     def file_tokens(self):
+-        """The complete set of tokens for a file.
++        """Return the complete set of tokens for a file.
+ 
+         Accessing this attribute *may* raise an InvalidSyntax exception.
+ 
+@@ -334,7 +334,7 @@ class FileProcessor(object):
+ 
+     def should_ignore_file(self):
+         # type: () -> bool
+-        """Check if ``# flake8: noqa`` is in the file to be ignored.
++        """Check if ``flake8: noqa`` is in the file to be ignored.
+ 
+         :returns:
+             True if a line matches :attr:`defaults.NOQA_FILE`,
+@@ -342,8 +342,16 @@ class FileProcessor(object):
+         :rtype:
+             bool
+         """
+-        ignore_file = defaults.NOQA_FILE.search
+-        return any(ignore_file(line) for line in self.lines)
++        if any(defaults.NOQA_FILE.match(line) for line in self.lines):
++            return True
++        elif any(defaults.NOQA_FILE.search(line) for line in self.lines):
++            LOG.warning(
++                'Detected `flake8: noqa` on line with code. To ignore an '
++                'error on a line use `noqa` instead.',
++            )
++            return False
++        else:
++            return False
+ 
+     def strip_utf_bom(self):
+         # type: () -> NoneType
+diff --git a/src/flake8/style_guide.py b/src/flake8/style_guide.py
+index 00eb1a5..b50580b 100644
+--- a/src/flake8/style_guide.py
++++ b/src/flake8/style_guide.py
+@@ -3,6 +3,7 @@ import collections
+ import contextlib
+ import enum
+ import functools
++import itertools
+ import linecache
+ import logging
+ 
+@@ -73,7 +74,7 @@ class Violation(_Violation):
+ 
+     def is_inline_ignored(self, disable_noqa):
+         # type: (Violation) -> bool
+-        """Determine if an comment has been added to ignore this line.
++        """Determine if a comment has been added to ignore this line.
+ 
+         :param bool disable_noqa:
+             Whether or not users have provided ``--disable-noqa``.
+@@ -166,7 +167,10 @@ class DecisionEngine(object):
+             self.selected + self.enabled_extensions,
+             reverse=True,
+         ))
+-        self.ignored = tuple(sorted(options.ignore, reverse=True))
++        self.ignored = tuple(sorted(
++            itertools.chain(options.ignore, options.extend_ignore),
++            reverse=True,
++        ))
+         self.using_default_ignore = set(self.ignored) == set(defaults.IGNORE)
+         self.using_default_select = (
+             set(self.selected) == set(defaults.SELECT)
+diff --git a/tests/fixtures/config_files/local-plugin-path.ini b/tests/fixtures/config_files/local-plugin-path.ini
+new file mode 100644
+index 0000000..7368c1e
+--- /dev/null
++++ b/tests/fixtures/config_files/local-plugin-path.ini
+@@ -0,0 +1,5 @@
++[flake8:local-plugins]
++extension =
++  XE = aplugin:ExtensionTestPlugin2
++paths =
++  ../../integration/subdir/
+diff --git a/tests/integration/subdir/aplugin.py b/tests/integration/subdir/aplugin.py
+new file mode 100644
+index 0000000..98a0464
+--- /dev/null
++++ b/tests/integration/subdir/aplugin.py
+@@ -0,0 +1,16 @@
++"""Module that is off sys.path by default, for testing local-plugin-paths."""
++
++
++class ExtensionTestPlugin2(object):
++    """Extension test plugin in its own directory."""
++
++    name = 'ExtensionTestPlugin2'
++    version = '1.0.0'
++
++    def __init__(self, tree):
++        """Construct an instance of test plugin."""
++        pass
++
++    def run(self):
++        """Do nothing."""
++        pass
+diff --git a/tests/integration/test_plugins.py b/tests/integration/test_plugins.py
+index 6d51a4a..e59eb91 100644
+--- a/tests/integration/test_plugins.py
++++ b/tests/integration/test_plugins.py
+@@ -3,6 +3,7 @@ from flake8.main import application
+ 
+ 
+ LOCAL_PLUGIN_CONFIG = 'tests/fixtures/config_files/local-plugin.ini'
++LOCAL_PLUGIN_PATH_CONFIG = 'tests/fixtures/config_files/local-plugin-path.ini'
+ 
+ 
+ class ExtensionTestPlugin(object):
+@@ -56,3 +57,11 @@ def test_local_plugin_can_add_option():
+         ['flake8', '--config', LOCAL_PLUGIN_CONFIG, '--anopt', 'foo'])
+ 
+     assert app.options.anopt == 'foo'
++
++
++def test_enable_local_plugin_at_non_installed_path():
++    """Can add a paths option in local-plugins config section for finding."""
++    app = application.Application()
++    app.initialize(['flake8', '--config', LOCAL_PLUGIN_PATH_CONFIG])
++
++    assert app.check_plugins['XE'].plugin.name == 'ExtensionTestPlugin2'
+diff --git a/tests/unit/test_base_formatter.py b/tests/unit/test_base_formatter.py
+index 87b5fee..e4dab2e 100644
+--- a/tests/unit/test_base_formatter.py
++++ b/tests/unit/test_base_formatter.py
+@@ -92,8 +92,8 @@ def test_write_uses_an_output_file(tee):
+         if tee:
+             assert print_func.called
+             assert print_func.mock_calls == [
+-                mock.call(line),
+-                mock.call(source),
++                mock.call(line, end='\n'),
++                mock.call(source, end='\n'),
+             ]
+         else:
+             assert not print_func.called
+@@ -118,8 +118,8 @@ def test_write_uses_print(print_function):
+     assert print_function.called is True
+     assert print_function.call_count == 2
+     assert print_function.mock_calls == [
+-        mock.call(line),
+-        mock.call(source),
++        mock.call(line, end='\n'),
++        mock.call(source, end='\n'),
+     ]
+ 
+ 
+diff --git a/tests/unit/test_checker_manager.py b/tests/unit/test_checker_manager.py
+index 82fa3f8..02397f0 100644
+--- a/tests/unit/test_checker_manager.py
++++ b/tests/unit/test_checker_manager.py
+@@ -22,17 +22,23 @@ def test_oserrors_cause_serial_fall_back():
+     style_guide = style_guide_mock()
+     with mock.patch('_multiprocessing.SemLock', side_effect=err):
+         manager = checker.Manager(style_guide, [], [])
++        with mock.patch.object(manager, 'run_serial') as serial:
++                manager.run()
++    assert serial.call_count == 1
+     assert manager.using_multiprocessing is False
+ 
+ 
+ @mock.patch('flake8.utils.is_windows', return_value=False)
+ def test_oserrors_are_reraised(is_windows):
+-    """Verify that OSErrors will cause the Manager to fallback to serial."""
++    """Verify that unexpected OSErrors will cause the Manager to reraise."""
+     err = OSError(errno.EAGAIN, 'Ominous message')
+     style_guide = style_guide_mock()
+     with mock.patch('_multiprocessing.SemLock', side_effect=err):
+         with pytest.raises(OSError):
+-            checker.Manager(style_guide, [], [])
++            manager = checker.Manager(style_guide, [], [])
++            with mock.patch.object(manager, 'run_serial') as serial:
++                manager.run()
++    assert serial.call_count == 0
+ 
+ 
+ def test_multiprocessing_is_disabled():
+diff --git a/tests/unit/test_decision_engine.py b/tests/unit/test_decision_engine.py
+index 354dc69..fd87a45 100644
+--- a/tests/unit/test_decision_engine.py
++++ b/tests/unit/test_decision_engine.py
+@@ -12,35 +12,42 @@ def create_options(**kwargs):
+     kwargs.setdefault('select', [])
+     kwargs.setdefault('extended_default_select', [])
+     kwargs.setdefault('ignore', [])
++    kwargs.setdefault('extend_ignore', [])
+     kwargs.setdefault('disable_noqa', False)
+     kwargs.setdefault('enable_extensions', [])
+     return optparse.Values(kwargs)
+ 
+ 
+-@pytest.mark.parametrize('ignore_list,error_code', [
+-    (['E111', 'E121'], 'E111'),
+-    (['E111', 'E121'], 'E121'),
+-    (['E11', 'E12'], 'E121'),
+-    (['E2', 'E12'], 'E121'),
+-    (['E2', 'E12'], 'E211'),
++@pytest.mark.parametrize('ignore_list,extend_ignore,error_code', [
++    (['E111', 'E121'], [], 'E111'),
++    (['E111', 'E121'], [], 'E121'),
++    (['E111'], ['E121'], 'E121'),
++    (['E11', 'E12'], [], 'E121'),
++    (['E2', 'E12'], [], 'E121'),
++    (['E2', 'E12'], [], 'E211'),
++    (['E2', 'E3'], ['E12'], 'E211'),
+ ])
+-def test_was_ignored_ignores_errors(ignore_list, error_code):
++def test_was_ignored_ignores_errors(ignore_list, extend_ignore, error_code):
+     """Verify we detect users explicitly ignoring an error."""
+-    decider = style_guide.DecisionEngine(create_options(ignore=ignore_list))
++    decider = style_guide.DecisionEngine(
++        create_options(ignore=ignore_list, extend_ignore=extend_ignore))
+ 
+     assert decider.was_ignored(error_code) is style_guide.Ignored.Explicitly
+ 
+ 
+-@pytest.mark.parametrize('ignore_list,error_code', [
+-    (['E111', 'E121'], 'E112'),
+-    (['E111', 'E121'], 'E122'),
+-    (['E11', 'E12'], 'W121'),
+-    (['E2', 'E12'], 'E112'),
+-    (['E2', 'E12'], 'E111'),
++@pytest.mark.parametrize('ignore_list,extend_ignore,error_code', [
++    (['E111', 'E121'], [], 'E112'),
++    (['E111', 'E121'], [], 'E122'),
++    (['E11', 'E12'], ['E121'], 'W121'),
++    (['E2', 'E12'], [], 'E112'),
++    (['E2', 'E12'], [], 'E111'),
++    (['E2', 'E12'], ['W11', 'E3'], 'E111'),
+ ])
+-def test_was_ignored_implicitly_selects_errors(ignore_list, error_code):
++def test_was_ignored_implicitly_selects_errors(ignore_list, extend_ignore,
++                                               error_code):
+     """Verify we detect users does not explicitly ignore an error."""
+-    decider = style_guide.DecisionEngine(create_options(ignore=ignore_list))
++    decider = style_guide.DecisionEngine(
++        create_options(ignore=ignore_list, extend_ignore=extend_ignore))
+ 
+     assert decider.was_ignored(error_code) is style_guide.Selected.Implicitly
+ 
+@@ -93,35 +100,46 @@ def test_was_selected_excludes_errors(select_list, error_code):
+     assert decider.was_selected(error_code) is style_guide.Ignored.Implicitly
+ 
+ 
+-@pytest.mark.parametrize('select_list,ignore_list,error_code,expected', [
+-    (['E111', 'E121'], [], 'E111', style_guide.Decision.Selected),
+-    (['E111', 'E121'], [], 'E112', style_guide.Decision.Ignored),
+-    (['E111', 'E121'], [], 'E121', style_guide.Decision.Selected),
+-    (['E111', 'E121'], [], 'E122', style_guide.Decision.Ignored),
+-    (['E11', 'E12'], [], 'E132', style_guide.Decision.Ignored),
+-    (['E2', 'E12'], [], 'E321', style_guide.Decision.Ignored),
+-    (['E2', 'E12'], [], 'E410', style_guide.Decision.Ignored),
+-    (['E11', 'E121'], ['E1'], 'E112', style_guide.Decision.Selected),
+-    (['E111', 'E121'], ['E2'], 'E122', style_guide.Decision.Ignored),
+-    (['E11', 'E12'], ['E13'], 'E132', style_guide.Decision.Ignored),
+-    (['E1', 'E3'], ['E32'], 'E321', style_guide.Decision.Ignored),
+-    ([], ['E2', 'E12'], 'E410', style_guide.Decision.Ignored),
+-    (['E4'], ['E2', 'E12', 'E41'], 'E410', style_guide.Decision.Ignored),
+-    (['E41'], ['E2', 'E12', 'E4'], 'E410', style_guide.Decision.Selected),
+-    (['E'], ['F'], 'E410', style_guide.Decision.Selected),
+-    (['F'], [], 'E410', style_guide.Decision.Ignored),
+-    (['E'], defaults.IGNORE, 'E126', style_guide.Decision.Selected),
+-    (['W'], defaults.IGNORE, 'E126', style_guide.Decision.Ignored),
+-    (['E'], defaults.IGNORE, 'W391', style_guide.Decision.Ignored),
+-    (['E', 'W'], ['E13'], 'E131', style_guide.Decision.Ignored),
+-    (defaults.SELECT, ['E13'], 'E131', style_guide.Decision.Ignored),
+-    (defaults.SELECT, defaults.IGNORE, 'E126', style_guide.Decision.Ignored),
+-    (defaults.SELECT, defaults.IGNORE, 'W391', style_guide.Decision.Selected),
+-])
+-def test_decision_for(select_list, ignore_list, error_code, expected):
++@pytest.mark.parametrize(
++    'select_list,ignore_list,extend_ignore,error_code,expected', [
++        (['E111', 'E121'], [], [], 'E111', style_guide.Decision.Selected),
++        (['E111', 'E121'], [], [], 'E112', style_guide.Decision.Ignored),
++        (['E111', 'E121'], [], [], 'E121', style_guide.Decision.Selected),
++        (['E111', 'E121'], [], [], 'E122', style_guide.Decision.Ignored),
++        (['E11', 'E12'], [], [], 'E132', style_guide.Decision.Ignored),
++        (['E2', 'E12'], [], [], 'E321', style_guide.Decision.Ignored),
++        (['E2', 'E12'], [], [], 'E410', style_guide.Decision.Ignored),
++        (['E11', 'E121'], ['E1'], [], 'E112', style_guide.Decision.Selected),
++        (['E11', 'E121'], [], ['E1'], 'E112', style_guide.Decision.Selected),
++        (['E111', 'E121'], ['E2'], ['E3'], 'E122',
++         style_guide.Decision.Ignored),
++        (['E11', 'E12'], ['E13'], [], 'E132', style_guide.Decision.Ignored),
++        (['E1', 'E3'], ['E32'], [], 'E321', style_guide.Decision.Ignored),
++        ([], ['E2', 'E12'], [], 'E410', style_guide.Decision.Ignored),
++        (['E4'], ['E2', 'E12', 'E41'], [], 'E410',
++         style_guide.Decision.Ignored),
++        (['E41'], ['E2', 'E12', 'E4'], [], 'E410',
++         style_guide.Decision.Selected),
++        (['E'], ['F'], [], 'E410', style_guide.Decision.Selected),
++        (['F'], [], [], 'E410', style_guide.Decision.Ignored),
++        (['E'], defaults.IGNORE, [], 'E126', style_guide.Decision.Selected),
++        (['W'], defaults.IGNORE, [], 'E126', style_guide.Decision.Ignored),
++        (['E'], defaults.IGNORE, [], 'W391', style_guide.Decision.Ignored),
++        (['E', 'W'], ['E13'], [], 'E131', style_guide.Decision.Ignored),
++        (defaults.SELECT, ['E13'], [], 'E131', style_guide.Decision.Ignored),
++        (defaults.SELECT, defaults.IGNORE, ['W391'], 'E126',
++         style_guide.Decision.Ignored),
++        (defaults.SELECT, defaults.IGNORE, [], 'W391',
++         style_guide.Decision.Selected),
++    ]
++)
++def test_decision_for(select_list, ignore_list, extend_ignore, error_code,
++                      expected):
+     """Verify we decide when to report an error."""
+-    decider = style_guide.DecisionEngine(create_options(select=select_list,
+-                                                        ignore=ignore_list))
++    decider = style_guide.DecisionEngine(
++        create_options(select=select_list,
++                       ignore=ignore_list,
++                       extend_ignore=extend_ignore))
+ 
+     assert decider.decision_for(error_code) is expected
+ 
+diff --git a/tests/unit/test_file_checker.py b/tests/unit/test_file_checker.py
+index 28264d5..4ca6154 100644
+--- a/tests/unit/test_file_checker.py
++++ b/tests/unit/test_file_checker.py
+@@ -5,7 +5,7 @@ from flake8 import checker
+ 
+ 
+ @mock.patch('flake8.processor.FileProcessor')
+-def test_run_ast_checks_handles_SyntaxErrors(FileProcessor):
++def test_run_ast_checks_handles_SyntaxErrors(FileProcessor):  # noqa: N802,N803
+     """Stress our SyntaxError handling.
+ 
+     Related to: https://gitlab.com/pycqa/flake8/issues/237
+@@ -32,3 +32,14 @@ def test_repr(*args):
+         'example.py', checks={}, options=object(),
+     )
+     assert repr(file_checker) == 'FileChecker for example.py'
++
++
++def test_nonexistent_file():
++    """Verify that checking non-existent file results in an error."""
++    c = checker.FileChecker("foobar.py", checks={}, options=object())
++
++    assert c.processor is None
++    assert not c.should_process
++    assert len(c.results) == 1
++    error = c.results[0]
++    assert error[0] == "E902"
+diff --git a/tests/unit/test_file_processor.py b/tests/unit/test_file_processor.py
+index 736d21e..312827b 100644
+--- a/tests/unit/test_file_processor.py
++++ b/tests/unit/test_file_processor.py
+@@ -46,6 +46,7 @@ def test_strip_utf_bom(first_line):
+     (['#!/usr/bin/python', '# flake8: noqa', 'a = 1'], True),
+     (['# flake8: noqa', '#!/usr/bin/python', 'a = 1'], True),
+     (['#!/usr/bin/python', 'a = 1', '# flake8: noqa'], True),
++    (['#!/usr/bin/python', 'a = 1  # flake8: noqa'], False),
+ ])
+ def test_should_ignore_file(lines, expected):
+     """Verify that we ignore a file if told to."""
+@@ -321,3 +322,8 @@ def test_log_token(token, log_string):
+ def test_count_parentheses(current_count, token_text, expected):
+     """Verify our arithmetic is correct."""
+     assert processor.count_parentheses(current_count, token_text) == expected
++
++
++def test_nonexistent_file():
++    with pytest.raises(IOError):
++        processor.FileProcessor("foobar.py", options_from())
+diff --git a/tests/unit/test_legacy_api.py b/tests/unit/test_legacy_api.py
+index f456bae..3c577d6 100644
+--- a/tests/unit/test_legacy_api.py
++++ b/tests/unit/test_legacy_api.py
+@@ -11,11 +11,11 @@ def test_get_style_guide():
+     mockedapp = mock.Mock()
+     mockedapp.prelim_opts.verbose = 0
+     mockedapp.prelim_opts.output_file = None
+-    with mock.patch('flake8.main.application.Application') as Application:
+-        Application.return_value = mockedapp
++    with mock.patch('flake8.main.application.Application') as application:
++        application.return_value = mockedapp
+         style_guide = api.get_style_guide()
+ 
+-    Application.assert_called_once_with()
++    application.assert_called_once_with()
+     mockedapp.parse_preliminary_options_and_args.assert_called_once_with([])
+     mockedapp.make_config_finder.assert_called_once_with()
+     mockedapp.find_plugins.assert_called_once_with()
+diff --git a/tests/unit/test_option.py b/tests/unit/test_option.py
+index 67e2255..76b4341 100644
+--- a/tests/unit/test_option.py
++++ b/tests/unit/test_option.py
+@@ -24,7 +24,7 @@ def test_to_optparse():
+ 
+ 
+ @mock.patch('optparse.Option')
+-def test_to_optparse_creates_an_option_as_we_expect(Option):
++def test_to_optparse_creates_an_option_as_we_expect(Option):  # noqa: N803
+     """Show that we pass all keyword args to optparse.Option."""
+     opt = manager.Option('-t', '--test', action='count')
+     opt.to_optparse()
+diff --git a/tests/unit/test_plugin_type_manager.py b/tests/unit/test_plugin_type_manager.py
+index b81a1ae..388cd8d 100644
+--- a/tests/unit/test_plugin_type_manager.py
++++ b/tests/unit/test_plugin_type_manager.py
+@@ -49,7 +49,7 @@ class FakeTestType(manager.PluginTypeManager):
+ 
+ 
+ @mock.patch('flake8.plugins.manager.PluginManager')
+-def test_instantiates_a_manager(PluginManager):
++def test_instantiates_a_manager(PluginManager):  # noqa: N803
+     """Verify we create a PluginManager on instantiation."""
+     FakeTestType()
+ 
+@@ -57,7 +57,7 @@ def test_instantiates_a_manager(PluginManager):
+ 
+ 
+ @mock.patch('flake8.plugins.manager.PluginManager')
+-def test_proxies_names_to_manager(PluginManager):
++def test_proxies_names_to_manager(PluginManager):  # noqa: N803
+     """Verify we proxy the names attribute."""
+     PluginManager.return_value = mock.Mock(names=[
+         'T100', 'T200', 'T300'
+@@ -68,7 +68,7 @@ def test_proxies_names_to_manager(PluginManager):
+ 
+ 
+ @mock.patch('flake8.plugins.manager.PluginManager')
+-def test_proxies_plugins_to_manager(PluginManager):
++def test_proxies_plugins_to_manager(PluginManager):  # noqa: N803
+     """Verify we proxy the plugins attribute."""
+     PluginManager.return_value = mock.Mock(plugins=[
+         'T100', 'T200', 'T300'
+@@ -91,7 +91,7 @@ def test_generate_call_function():
+ 
+ 
+ @mock.patch('flake8.plugins.manager.PluginManager')
+-def test_load_plugins(PluginManager):
++def test_load_plugins(PluginManager):  # noqa: N803
+     """Verify load plugins loads *every* plugin."""
+     # Create a bunch of fake plugins
+     plugins = [create_plugin_mock(), create_plugin_mock(),
+@@ -111,7 +111,7 @@ def test_load_plugins(PluginManager):
+ 
+ 
+ @mock.patch('flake8.plugins.manager.PluginManager')
+-def test_load_plugins_fails(PluginManager):
++def test_load_plugins_fails(PluginManager):  # noqa: N803
+     """Verify load plugins bubbles up exceptions."""
+     plugins = [create_plugin_mock(), create_plugin_mock(True),
+                create_plugin_mock(), create_plugin_mock(),
+@@ -135,7 +135,7 @@ def test_load_plugins_fails(PluginManager):
+ 
+ 
+ @mock.patch('flake8.plugins.manager.PluginManager')
+-def test_register_options(PluginManager):
++def test_register_options(PluginManager):  # noqa: N803
+     """Test that we map over every plugin to register options."""
+     plugins = [create_plugin_mock(), create_plugin_mock(),
+                create_plugin_mock(), create_plugin_mock(),
+@@ -153,7 +153,7 @@ def test_register_options(PluginManager):
+ 
+ 
+ @mock.patch('flake8.plugins.manager.PluginManager')
+-def test_provide_options(PluginManager):
++def test_provide_options(PluginManager):  # noqa: N803
+     """Test that we map over every plugin to provide parsed options."""
+     plugins = [create_plugin_mock(), create_plugin_mock(),
+                create_plugin_mock(), create_plugin_mock(),
+@@ -175,7 +175,7 @@ def test_provide_options(PluginManager):
+ 
+ 
+ @mock.patch('flake8.plugins.manager.PluginManager')
+-def test_proxy_contains_to_managers_plugins_dict(PluginManager):
++def test_proxy_contains_to_managers_plugins_dict(PluginManager):  # noqa: N803
+     """Verify that we proxy __contains__ to the manager's dictionary."""
+     plugins = {'T10%i' % i: create_plugin_mock() for i in range(8)}
+     # Return our PluginManager mock
+@@ -188,7 +188,7 @@ def test_proxy_contains_to_managers_plugins_dict(PluginManager):
+ 
+ 
+ @mock.patch('flake8.plugins.manager.PluginManager')
+-def test_proxies_getitem_to_managers_plugins_dictionary(PluginManager):
++def test_proxies_getitem_to_managers_plugins_dict(PluginManager):  # noqa: N803
+     """Verify that we can use the PluginTypeManager like a dictionary."""
+     plugins = {'T10%i' % i: create_plugin_mock() for i in range(8)}
+     # Return our PluginManager mock
+diff --git a/tests/unit/test_setuptools_command.py b/tests/unit/test_setuptools_command.py
+index 40c9733..1c52b2a 100644
+--- a/tests/unit/test_setuptools_command.py
++++ b/tests/unit/test_setuptools_command.py
+@@ -1,6 +1,5 @@
+ """Module containing tests for the setuptools command integration."""
+ import pytest
+-
+ from setuptools import dist
+ 
+ from flake8.main import setuptools_command
+diff --git a/tests/unit/test_style_guide.py b/tests/unit/test_style_guide.py
+index 84c47ff..c9005ab 100644
+--- a/tests/unit/test_style_guide.py
++++ b/tests/unit/test_style_guide.py
+@@ -14,6 +14,7 @@ def create_options(**kwargs):
+     kwargs.setdefault('select', [])
+     kwargs.setdefault('extended_default_select', [])
+     kwargs.setdefault('ignore', [])
++    kwargs.setdefault('extend_ignore', [])
+     kwargs.setdefault('disable_noqa', False)
+     kwargs.setdefault('enable_extensions', [])
+     return optparse.Values(kwargs)
+diff --git a/tests/unit/test_trie.py b/tests/unit/test_trie.py
+index 152b5b6..2f08a37 100644
+--- a/tests/unit/test_trie.py
++++ b/tests/unit/test_trie.py
+@@ -83,7 +83,7 @@ class TestTrieNode(object):
+         assert child.prefix == 'a'
+         assert child.data == 'a is for Apple'
+ 
+-    def test_find_prefix_returns_None_when_no_children_have_the_prefix(self):
++    def test_find_prefix_returns_none_when_no_children_have_the_prefix(self):
+         """Verify we receive None from find_prefix for missing children."""
+         node = trie.TrieNode('E', 'E is for Eat', children={
+             'a': trie.TrieNode('a', 'a is for Apple')
+diff --git a/tox.ini b/tox.ini
+index 69d01e6..df78a20 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -1,6 +1,6 @@
+ [tox]
+ minversion=2.3.1
+-envlist = py27,py33,py34,py35,py36,flake8,linters,docs
++envlist = py27,py34,py35,py36,py37,flake8,linters,docs
+ 
+ [testenv]
+ deps =
+@@ -37,6 +37,8 @@ deps =
+     flake8
+     flake8-docstrings>=0.2.7
+     flake8-import-order>=0.9
++    pep8-naming
++    flake8-colors
+ commands =
+     flake8 src/flake8/ tests/ setup.py
+ 
+@@ -141,7 +143,7 @@ commands =
+ # defaults to selecting all other errors so we do not need select=E,F,W,I,D
+ # Once Flake8 3.0 is released and in a good state, we can use both and it will
+ # work well \o/
+-ignore = D203
++ignore = D203, W504
+ exclude =
+     .tox,
+     .git,
+@@ -157,3 +159,4 @@ exclude =
+ max-complexity = 10
+ import-order-style = google
+ application-import-names = flake8
++format = ${cyan}%(path)s${reset}:${yellow_bold}%(row)d${reset}:${green_bold}%(col)d${reset}: ${red_bold}%(code)s${reset} %(text)s
+--- flake8-3.5.0/setup.cfg~	2017-10-23 11:16:02.000000000 +0000
++++ flake8-3.5.0/setup.cfg	2018-08-06 15:16:37.022600869 +0000
+@@ -8,9 +8,9 @@
+ requires-dist = 
+ 	enum34; python_version<"3.4"
+ 	configparser; python_version<"3.2"
+-	pyflakes >= 1.5.0, < 1.7.0
+-	pycodestyle >= 2.0.0, < 2.4.0
+-	mccabe >= 0.6.0, < 0.7.0
++	pyflakes >= 2.0.0, < 2.1.0
++	pycodestyle >= 2.4.0, < 2.5.0
++ 	mccabe >= 0.6.0, < 0.7.0
+ 
+ [egg_info]
+ tag_build = 
