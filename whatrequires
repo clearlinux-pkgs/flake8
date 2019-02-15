@@ -4,3 +4,4 @@ flake8-class-newline
 flake8-comprehensions
 flake8-deprecated
 flake8-docstrings
+responses
