@@ -4,7 +4,7 @@
 #
 Name     : flake8
 Version  : 3.7.7
-Release  : 56
+Release  : 57
 URL      : https://files.pythonhosted.org/packages/23/e7/80626da76ff2b4c94ac9bcd92898a1011d1c891e0ba1343f24109923462d/flake8-3.7.7.tar.gz
 Source0  : https://files.pythonhosted.org/packages/23/e7/80626da76ff2b4c94ac9bcd92898a1011d1c891e0ba1343f24109923462d/flake8-3.7.7.tar.gz
 Summary  : The modular source code checker: pep8, pyflakes and co
