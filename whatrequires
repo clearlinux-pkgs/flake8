@@ -1,7 +1,10 @@
 # This file contains recursive sources that require this package
+Keras_Preprocessing
+conda
 flake8-builtins
 flake8-class-newline
 flake8-comprehensions
 flake8-deprecated
 flake8-docstrings
 responses
+sphinxcontrib-spelling

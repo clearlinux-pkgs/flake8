@@ -1,5 +1,5 @@
 PKG_NAME := flake8
-URL = https://files.pythonhosted.org/packages/23/e7/80626da76ff2b4c94ac9bcd92898a1011d1c891e0ba1343f24109923462d/flake8-3.7.7.tar.gz
+URL = https://files.pythonhosted.org/packages/8d/a7/99222c9200af533c1ecb1120d99adbd1c033b57296ac5cb39d121db007a8/flake8-3.7.8.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
