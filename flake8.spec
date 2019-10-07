@@ -4,7 +4,7 @@
 #
 Name     : flake8
 Version  : 3.7.8
-Release  : 59
+Release  : 60
 URL      : https://files.pythonhosted.org/packages/8d/a7/99222c9200af533c1ecb1120d99adbd1c033b57296ac5cb39d121db007a8/flake8-3.7.8.tar.gz
 Source0  : https://files.pythonhosted.org/packages/8d/a7/99222c9200af533c1ecb1120d99adbd1c033b57296ac5cb39d121db007a8/flake8-3.7.8.tar.gz
 Summary  : the modular source code checker: pep8, pyflakes and co
@@ -16,7 +16,6 @@ Requires: flake8-python = %{version}-%{release}
 Requires: flake8-python3 = %{version}-%{release}
 Requires: configparser
 Requires: entrypoints
-Requires: functools32
 Requires: mccabe
 Requires: pycodestyle
 Requires: pyflakes
@@ -24,7 +23,6 @@ Requires: typing
 BuildRequires : buildreq-distutils3
 BuildRequires : configparser
 BuildRequires : entrypoints
-BuildRequires : functools32
 BuildRequires : mccabe
 BuildRequires : mccabe-python
 BuildRequires : nose-python
@@ -81,7 +79,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564945976
+export SOURCE_DATE_EPOCH=1570483691
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
