@@ -4,10 +4,10 @@
 #
 Name     : flake8
 Version  : 3.7.9
-Release  : 65
+Release  : 66
 URL      : https://files.pythonhosted.org/packages/a5/bb/7e707d8001aca96f15f684b02176ecb0575786f041293f090b44ea04f2d0/flake8-3.7.9.tar.gz
 Source0  : https://files.pythonhosted.org/packages/a5/bb/7e707d8001aca96f15f684b02176ecb0575786f041293f090b44ea04f2d0/flake8-3.7.9.tar.gz
-Summary  : the modular source code checker: pep8, pyflakes and co
+Summary  : The modular source code checker: pep8, pyflakes and co
 Group    : Development/Tools
 License  : MIT
 Requires: flake8-bin = %{version}-%{release}
@@ -31,8 +31,83 @@ BuildRequires : pyflakes-python
 BuildRequires : typing
 
 %description
-Flake8
-        ========
+========
+ Flake8
+========
+
+Flake8 is a wrapper around these tools:
+
+- PyFlakes
+- pycodestyle
+- Ned Batchelder's McCabe script
+
+Flake8 runs all the tools by launching the single ``flake8`` command.
+It displays the warnings in a per-file, merged output.
+
+It also adds a few features:
+
+- files that contain this line are skipped::
+
+    # flake8: noqa
+
+- lines that contain a ``# noqa`` comment at the end will not issue warnings.
+- you can ignore specific errors on a line with ``# noqa: <error>``, e.g.,
+  ``# noqa: E234``. Multiple codes can be given, separated by comma. The ``noqa`` token is case insensitive, the colon before the list of codes is required otherwise the part after ``noqa`` is ignored
+- Git and Mercurial hooks
+- extendable through ``flake8.extension`` and ``flake8.formatting`` entry
+  points
+
+
+Quickstart
+==========
+
+See our `quickstart documentation
+<http://flake8.pycqa.org/en/latest/index.html#quickstart>`_ for how to install
+and get started with Flake8.
+
+
+Frequently Asked Questions
+==========================
+
+Flake8 maintains an `FAQ <http://flake8.pycqa.org/en/latest/faq.html>`_ in its
+documentation.
+
+
+Questions or Feedback
+=====================
+
+If you have questions you'd like to ask the developers, or feedback you'd like
+to provide, feel free to use the mailing list: code-quality@python.org
+
+We would love to hear from you. Additionally, if you have a feature you'd like
+to suggest, the mailing list would be the best place for it.
+
+
+Links
+=====
+
+* `Flake8 Documentation <http://flake8.pycqa.org/en/latest/>`_
+
+* `GitLab Project <https://gitlab.com/pycqa/flake8>`_
+
+* `All (Open and Closed) Issues
+  <https://gitlab.com/pycqa/flake8/issues?scope=all&sort=updated_desc&state=all>`_
+
+* `Code-Quality Archives
+  <https://mail.python.org/mailman/listinfo/code-quality>`_
+
+* `Code of Conduct
+  <http://flake8.pycqa.org/en/latest/internal/contributing.html#code-of-conduct>`_
+
+* `Getting Started Contributing
+  <http://flake8.pycqa.org/en/latest/internal/contributing.html>`_
+
+
+Maintenance
+===========
+
+Flake8 was created by Tarek Ziadé and is currently maintained by `Ian Cordasco
+<http://www.coglib.com/~icordasc/>`_
 
 %package bin
 Summary: bin components for the flake8 package.
@@ -64,6 +139,7 @@ python components for the flake8 package.
 Summary: python3 components for the flake8 package.
 Group: Default
 Requires: python3-core
+Provides: pypi(flake8)
 
 %description python3
 python3 components for the flake8 package.
@@ -78,7 +154,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573846643
+export SOURCE_DATE_EPOCH=1582923354
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "

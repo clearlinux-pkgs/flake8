@@ -1,10 +1,16 @@
 # This file contains recursive sources that require this package
 Keras_Preprocessing
+PyJWT
 conda
+django-nose
 flake8-builtins
 flake8-class-newline
 flake8-comprehensions
 flake8-deprecated
 flake8-docstrings
+hacking
+jedi
 responses
+sphinxcontrib-htmlhelp
 sphinxcontrib-spelling
+sphinxcontrib-websupport
