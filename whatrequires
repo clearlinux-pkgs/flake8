@@ -12,6 +12,7 @@ flake8-polyfill
 hacking
 jedi
 pytest-flake8
+python-language-server
 responses
 sphinxcontrib-applehelp
 sphinxcontrib-devhelp

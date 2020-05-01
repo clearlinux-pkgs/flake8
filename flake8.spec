@@ -4,7 +4,7 @@
 #
 Name     : flake8
 Version  : 3.7.9
-Release  : 67
+Release  : 68
 URL      : https://files.pythonhosted.org/packages/a5/bb/7e707d8001aca96f15f684b02176ecb0575786f041293f090b44ea04f2d0/flake8-3.7.9.tar.gz
 Source0  : https://files.pythonhosted.org/packages/a5/bb/7e707d8001aca96f15f684b02176ecb0575786f041293f090b44ea04f2d0/flake8-3.7.9.tar.gz
 Summary  : the modular source code checker: pep8, pyflakes and co
@@ -18,7 +18,6 @@ Requires: entrypoints
 Requires: mccabe
 Requires: pycodestyle
 Requires: pyflakes
-Requires: typing
 BuildRequires : buildreq-distutils3
 BuildRequires : entrypoints
 BuildRequires : mccabe
@@ -28,7 +27,6 @@ BuildRequires : pep8-python
 BuildRequires : pycodestyle
 BuildRequires : pyflakes
 BuildRequires : pyflakes-python
-BuildRequires : typing
 
 %description
 Flake8
@@ -83,11 +81,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583442652
+export SOURCE_DATE_EPOCH=1588359851
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
