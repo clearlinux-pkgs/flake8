@@ -11,6 +11,7 @@ flake8-docstrings
 flake8-polyfill
 hacking
 jedi
+knack
 pytest-flake8
 python-language-server
 responses
