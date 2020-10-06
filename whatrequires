@@ -3,16 +3,11 @@ Keras_Preprocessing
 PyJWT
 conda
 django-nose
-flake8-builtins
 flake8-class-newline
-flake8-comprehensions
-flake8-deprecated
 flake8-docstrings
-flake8-polyfill
-hacking
 jedi
 knack
-pytest-flake8
+parso
 python-language-server
 responses
 sphinxcontrib-applehelp
@@ -20,5 +15,4 @@ sphinxcontrib-devhelp
 sphinxcontrib-htmlhelp
 sphinxcontrib-qthelp
 sphinxcontrib-serializinghtml
-sphinxcontrib-spelling
 sphinxcontrib-websupport
