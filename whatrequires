@@ -8,6 +8,7 @@ flake8-docstrings
 jedi
 knack
 parso
+python-dotenv
 python-language-server
 responses
 sphinxcontrib-applehelp
