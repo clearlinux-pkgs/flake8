@@ -1,6 +1,5 @@
 # This file contains recursive sources that require this package
 Keras_Preprocessing
-PyJWT
 conda
 django-nose
 flake8-class-newline
