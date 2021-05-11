@@ -9,6 +9,7 @@ knack
 parso
 python-dotenv
 python-language-server
+python-lsp-server
 responses
 sphinxcontrib-applehelp
 sphinxcontrib-devhelp
