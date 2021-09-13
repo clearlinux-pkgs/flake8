@@ -6,6 +6,7 @@ flake8-class-newline
 flake8-docstrings
 jedi
 knack
+koji
 parso
 python-dotenv
 python-language-server
