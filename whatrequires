@@ -11,6 +11,7 @@ parso
 python-dotenv
 python-language-server
 python-lsp-server
+resolvelib
 responses
 sphinxcontrib-applehelp
 sphinxcontrib-devhelp
